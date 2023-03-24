@@ -7,15 +7,20 @@ import java.util.Scanner;
 public class BreakOut {
 	static Scanner in = new Scanner(System.in);
 
-	public static void main(String[] args) {
-		playAgain(); // calls this method to play game until user doesn't want to
+	public static void main(String[] args){
+		try {
+			playAgain(); // calls this method to play game until user doesn't want to
+		} catch (InterruptedException e) {
+			println("Thread Interrupted");
+			e.printStackTrace();
+		}
 	}
 	// this method starts the game, sets the scenes, and finishes game. Then asks user if they want to replay
-	public static void playAgain() {
+	public static void playAgain() throws InterruptedException {
 		Random randomGen = new Random(); // random generator
 		ArrayList<Integer> scenes = new ArrayList<Integer>(); // arrayList to store the scene order
 		boolean playAgain; // play again flag
-		String again = ""; // initialize user input for playing again
+		String again; // declare user input for playing again
 		do {
 			// beginning of game
 			println("*****BREAKOUT!*****");
@@ -24,15 +29,14 @@ public class BreakOut {
 			println("You are wondering how you got in this position but no matter how much you replay "
 					+ "\nwhat you have done you know that it doesn't matter now. You are headed to your "
 					+ "\nnew home.");
-
+			Thread.sleep(8000);
 			println("\nCOP: You thought you'd get away with it huh? Sike! Now look at you, you're headed"
 					+ " to prison.");
 			println("COP: Good Luck, the Java State Prison is no joke.");
 			println("COP: But you know what they say, don't do the crime if you can't do the time");
-
+			Thread.sleep(6000);
 			println("\nYou arrive at the prison and are escorted to the processing unit.\n");
 			println("********************************************************************************");
-			println("\n***** ADMIN *****");
 
 			Scenes gameScene = new Scenes(); // create scenes object
 			Player inmate = Scenes.admin(); // creates an player object for user
@@ -43,7 +47,7 @@ public class BreakOut {
 					scenes.add(random); // if not then add that scene
 				}
 			}
-			scenes.add(10); // add the last scene
+			scenes.add(10); // add the escape scene at the end
 			levels: // label for looping through scenes
 				for(int num : scenes ) { // foreach to loop through each scene
 					if (num == 0) {
@@ -80,6 +84,7 @@ public class BreakOut {
 					playAgain = false; // no don't play again
 				}
 			} while (!again.equalsIgnoreCase("y") && !again.equalsIgnoreCase("n")); // enforce user to enter accepted response only
+			println("");
 		} while (playAgain);
 	}
 	// this method is just to have more convenient print method
