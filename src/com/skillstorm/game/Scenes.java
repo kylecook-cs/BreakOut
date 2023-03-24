@@ -4,66 +4,68 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Scenes {
+public class Scenes { // scenes object
 
-	static Scanner in = new Scanner(System.in);
+	static Scanner in = new Scanner(System.in); // Scanner object that this class can use
 
+	// this method is where game really begins and creates the user's player object
 	public static Player admin() {
-		String username;
-		int securityLevel;
-		ArrayList<String> starterInventory = new ArrayList<String>();
-		starterInventory.add("toothbrush");
-		Player user;
-		
-		println("Admin: Welcome to the Java State Prison");
+		String username; // holds user's input for name
+		int securityLevel; // holds user's input from player's security level
+		ArrayList<String> starterInventory = new ArrayList<String>(); // creates an initial player's inventory ArrayList 
+		starterInventory.add("toothbrush"); // add toothbrush to inventory
+		Player user; // declare a player object
+		// beginning of Admin Scene
+		println("Admin: Welcome to the Java State Prison.");
 		println("Admin: This is the processing unit, I will need just a couple pieces of information from you.");
 		do {
-			print("Admin: May I have your name?: ");
+			print("Admin: May I have your name?: "); // prompt user for name
 			username = in.nextLine();
-		} while (username.trim().equals(""));
+		} while (username.trim().equals("")); // checks if user entered any input
 		do {
-			println("\nAdmin: Thank you, Prisoner " + username);
+			println("\nAdmin: Thank you, Prisoner " + username); // username was accepted
 			try {
 				print("Admin: Now can you tell me what your security level is "
-						+ "(1: minimum, 2: average, 3: maximum): ");
+						+ "(1: minimum, 2: average, 3: maximum): "); // prompt user for their player's security level
 				securityLevel = in.nextInt();
-			} catch(InputMismatchException e) {
+			} catch(InputMismatchException e) { // catch exception if user did not enter correct prompt format
 				securityLevel = 100;
 				in.nextLine();
 			}
 		} while (securityLevel != 1 && securityLevel != 2 && securityLevel != 3);
-		
-		if (securityLevel == 1) {
+		// security level was accepted
+		if (securityLevel == 1) { // if security level == 1
 			println("\nAdmin: Level 1 security... Hmmmm interesting, you must have just forgot a ; somewhere,"
-					+ "\n\tso I'll put in your file that you fall under the soft catergory.\n");
-			user = new Player(username, securityLevel, 7, 2, 5, starterInventory);
-			println(user.toString());
-		} else if (securityLevel == 2) {
+					+ "\n\tso I'll put in your file that you fall under the weak catergory.\n");
+			user = new Player(username, securityLevel, 7, 2, 5, starterInventory); // create weak player
+			println(user.toString()); // display player stats
+		} else if (securityLevel == 2) { // if security level == 2
 			println("\nAdmin: Level 2 security you say, you must have used the wrong data type? I'll be sure to note that\n.");
-			user = new Player(username, securityLevel, 8, 3, 3, starterInventory);	
-			println(user.toString());
-		} else {
+			user = new Player(username, securityLevel, 8, 3, 3, starterInventory);	// create average player
+			println(user.toString()); // display player stats
+		} else { // if security level == 3
 			println("\nAdmin: Level 3 Yikeees! You must be an infinite looper! Remind me to stay out of your code...\n");
-			user = new Player(username, securityLevel, 10, 5, 1, starterInventory);
-			println(user.toString());
+			user = new Player(username, securityLevel, 10, 5, 1, starterInventory); // create strong player
+			println(user.toString()); // display player stats
 		}
 		println("Admin: Processing is now complete. Enjoy your stay Prisoner " + user.getName());
-		println("\nDay1 Night1....\n Day2 Night2....\n  Day3 Night3...\n");
-		
+		println("\nDay1 Night1....\n Day2 Night2....\n  Day3 Night3....\n");
+
 		println("After spending 3 days in the Java State Prison, you realize this isn't the place for you");
 		println("Of course you believe you shouldn't be there in the first place, "
-				+ "since we \"we all know your innocent\". \nBut understanding you only have one real option"
+				+ "since \"we all know your innocent\". \nBut you understand you only have one real option"
 				+ " to get out, and that's to BREAKOUT. \nYou decide tomorrow will be the day you'll escape"
 				+ " from the Java State Prison.");
-		
+
 		println("\n********** NEXT DAY **********");
-		return user;
+		return user; // returns the user's new player and exits admin scene
 	}
-	public void cell(Player user) {
-		int answer = 0;
-		
-		println("\n**** CELL ****");
-		println(user.toString());
+	// cell scene
+	public boolean cell(Player user) {
+		int answer = 0; // initialize user's answer for prompts in this scene
+
+		println("\n**** CELL ****"); // beginning of cell scene
+		println(user.toString()); // display player stats
 		println("You find yourself in your cell contemplating on what your next move should be.");
 		println("This cell reminds of you of every reason why you don't want to be here.");
 		do { 
@@ -72,60 +74,67 @@ public class Scenes {
 				println("1: You look around your cell");
 				println("2: You exit the cell" );
 				println("3: You try to escape the prison");
-				print("Please enter the corresponding number (1 / 2 / 3): ");
+				print("Please enter the corresponding number (1 / 2 / 3): "); // prompt user for answer
 				answer = in.nextInt();
-				} catch(InputMismatchException e) {
-					answer = 100;
-					in.nextLine();
-				}
-		} while(answer != 1 && answer != 2 && answer != 3);
-		if (answer == 1) {
+			} catch(InputMismatchException e) { // catch exception if user did not enter correct prompt format
+				answer = 100;
+				in.nextLine();
+			}
+		} while(answer != 1 && answer != 2 && answer != 3); 
+		// user prompt was accepted
+		if (answer == 1) { // if answer == 1 look around the cell
 			println("\nYou start searching around your cell.");
 			println("You're not having any luck when you see a weird discoloration on the wall.");
 			println("It appears to be a false brick so you take your standard issued toothbrush\n"
 					+ "and begin to brush away the dust from the fake brick. It starts to crumble as\n"
 					+ "you do so. Then your cell mate comes rushing in, yelling about what you are doing.");
-			
+
 			println("\nYou can't bring attention to the situation! You decide the best solution is to");
 			println("fight your cell mate to keep him quiet.");
 			println("\nYou and your cell mate start to throw down!!!");
-			if (user.getSecurityLevel() == 3) {
+			if (user.getSecurityLevel() == 3) { // checks security level and reacts accordingly
 				println("Before the fight you cell mate remembers you are a level 3 inmate!");
 				println("They cower in front of you and willingly grab the fake brick revealing it's contents");
 				println("It's a grappling hook that they were planning to use in their own escape.");
 				println("Grappling hook now added to your inventory.");
-				user.setInventory(user.getInventory(), "grappling hook");
-				println(user.toString());
+				user.setInventory(user.getInventory(), "grappling hook"); // add grappling hook to inventory
+				println(user.toString()); // display player stats
 				println("It's time to leave the cell.");
 			} else if (user.getSecurityLevel() == 2) {
 				println("After a back and forth battle you end up winning the fight but you took some damage.");
 				println("Lumps... Health - 1");
-				user.setHealthPoints(user.getHealthPoints()-1);
-				println(user.toString());
+				user.setHealthPoints(user.getHealthPoints()-1); // health damage
+				if (!checkHealth(user)) { // check if user has enough health to continue
+					return false; // returns false, game ends
+				}
+				println(user.toString()); // display player stats
 				println("Your cell mate has gained respect for you and decides to give you the contents inside"
 						+ "\nof the fake brick. ");
-				println("It's a grappling hook that they were planning to use in thier own escape.");
+				println("It's a grappling hook that they were planning to use in their own escape.");
 				println("Grappling hook now added to your inventory.");
-				user.setInventory(user.getInventory(), "grappling hook");
-				println(user.toString());
-				println("Now you continue on the rest of your plan.");
+				user.setInventory(user.getInventory(), "grappling hook"); // add grappling hook to inventory
+				println(user.toString()); // display player stats
+				println("Now you continue on with the rest of your plan.");
 			} else {
 				println("The word got around the prison that you were soft.");
-				println("You end up getting beat up pretty badly, your cell mate kicks you out of the cell");
+				println("You end up getting beat up pretty badly, your cell mate kicks you out of the cell.");
 				println("Bad Idea... Health - 2");
-				user.setHealthPoints(user.getHealthPoints()-2);
-				println(user.toString());
-
+				user.setHealthPoints(user.getHealthPoints()-3); // health damage
+				println(user.toString()); // display player stats
+				if (!checkHealth(user)) { // check if user has enough health to continue
+					return false; // returns false, game ends
+				}
 			}
 		} else if (answer == 2) {
-			println("You leave you cell.");
+			println("You leave you cell."); // next
 		} else {
-			escape(user);
+			return escape(user); // user chose to escape, returns if successful or not
 		}
-		
+		return true; // return true to continue game
 	}
-	public void kitchen(Player user) {
-		int answer = 0;
+	// kitchen scene
+	public boolean kitchen(Player user) {
+		int answer = 0; // initialize user's answer for prompts in this scene
 		println("\n**** Kitchen ****");
 		println("You are in the kitchen. This room does not have much to offer since everything is either tethered down or \n"
 				+ "too heavy to carry on your person.");	
@@ -135,29 +144,30 @@ public class Scenes {
 				println("1: look around anyways");
 				println("2: leave the kitchen");
 				println("3: you try to escape the prison");
-				print("Please entering the corresponding number (1 / 2 / 3): ");
+				print("Please enter the corresponding number (1 / 2 / 3): ");  // prompt user for answer
 				answer = in.nextInt();
-				} catch(InputMismatchException e) {
-					answer = 100;
-					in.nextLine();
-				}
+			} catch(InputMismatchException e) { // catch exception if user did not enter correct prompt format
+				answer = 100;
+				in.nextLine();
+			}
 		} while(answer != 1 && answer != 2 && answer!= 3);
+		// user prompt was accepted
 		if (answer == 1) {
 			println("While searching around the kitchen, you find a snack and decide to eat it to get some more energy.");
 			println("Eating... Health + 1");
-			user.setHealthPoints(user.getHealthPoints()+1);
-			println(user.toString());
+			user.setHealthPoints(user.getHealthPoints()+1); // health increase
+			println(user.toString()); // display player stats
 			println("There's nothing else here so you leave the kitchen");
-			return;
 		} else if (answer == 2){
 			println("Leaving the kitchen");
-			return;
 		} else {
-			escape(user);
+			return escape(user); // user chose to escape, returns if successful or not
 		}
+		return true; // return true to continue game
 	}
-	public void dayroom(Player user) {
-		int answer = 0;
+	// dayroom scene
+	public boolean dayroom(Player user) {
+		int answer = 0; // initialize user's answer for prompts in this scene
 		println("\n**** Dayroom ****");
 		println(user.toString());
 		println("You find yourself in the Dayroom.");
@@ -169,13 +179,14 @@ public class Scenes {
 				println("1: You decide to talk to another inmate");
 				println("2: You exit the dayroom" );
 				println("3: You try to escape the prison");
-				print("Please entering the corresponding number (1 / 2 / 3): ");
+				print("Please enter the corresponding number (1 / 2 / 3): ");  // prompt user for answer
 				answer = in.nextInt();
-				} catch(InputMismatchException e) {
-					answer = 100;
-					in.nextLine();
-				}
+			} catch(InputMismatchException e) { // catch exception if user did not enter correct prompt format
+				answer = 100;
+				in.nextLine();
+			}
 		} while(answer != 1 && answer != 2 && answer != 3);
+		// user prompt was accepted
 		if (answer == 1) {
 			println("\nYou begin conversating with another inmate...");
 			println("They tell you they work in maintenance, and stashed a electrician outfit they found.");
@@ -185,62 +196,71 @@ public class Scenes {
 					println("\nIn the least suspicious way you");
 					println("1: inform them of your plan and ask them for it");
 					println("2: don't share your plans and leave the conversation" );
-					print("Please entering the corresponding number (1 / 2): ");
+					print("Please enter the corresponding number (1 / 2): "); // prompt user for answer
 					answer = in.nextInt();
-					} catch(InputMismatchException e) {
-						answer = 100;
-						in.nextLine();
-					}
+				} catch(InputMismatchException e) { // catch exception if user did not enter correct prompt format
+					answer = 100;
+					in.nextLine();
+				}
 			} while(answer != 1 && answer != 2);
+			// user prompt was accepted
 			if (answer == 1) {
-				println("\nYou talk to them about what your intentions are.");
+				println("\nYou talk to them about what your intentions are."); // uses intelligence level to gauge result
 				if (user.getIntellegence() == 5) {
 					println("They realize how smart you are. The inmate makes a deal with you that they will give\n"
 							+ "you the uniform in exchange of you helping them beat their case when you get free.");
-					user.setInventory(user.getInventory(), "disguise");
-					println(user.toString());
+					println("A disguise was added to your inventory.");
+					user.setInventory(user.getInventory(), "disguise"); // add disguise to inventory
+					println(user.toString()); // display player stats
 					println("It's time to leave the dayroom.");
 				} else if (user.getIntellegence() == 3) {
 					println("The inmate decides they don't know whether to trust you or not\n"
 							+ "so in order to receieve the diguise you must trade for it.");
 					if (user.getInventory().contains("sheets")) {
-						user.getInventory().remove("sheets");
+						user.getInventory().remove("sheets"); // trade sheets, inventory updated
 						println("You traded your sheets for the uniform..");
+						println("A disguise was added to your inventory.");
 						user.setInventory(user.getInventory(), "disguise");
-						println(user.toString());
+						println(user.toString()); // display player stats
 					} else {
-						user.getInventory().remove("toothbrush");
+						user.getInventory().remove("toothbrush"); // trade toothbrush, inventory updated
 						println("You traded away your toothbrush");
-						user.setInventory(user.getInventory(), "disguise");
-						println(user.toString());
+						println("A disguise was added to your inventory.");
+						user.setInventory(user.getInventory(), "disguise"); // add disguise to inventory
+						println(user.toString()); // display player stats
 					}
 					println("It's time to leave the dayroom");
 				} else {
 					println("Everyone knows what level inmate you are");
-					println("The inmate figures you are not the birghtest so they can't trust you. ");
+					println("The inmate figures you are not the brightest so they can't trust you. ");
 					println("They tell you no you can't have it. This makes you incredibly angry. You grab\n"
 							+ "the inmate by the collar but before you can harm them a correctional officer\n"
 							+ "peppersprays the both of you. This stings your eyes and you release him.\n");
 					println("Spicy.. Health - 2");
-					user.setHealthPoints(user.getHealthPoints()-2);
-					println(user.toString());
+					user.setHealthPoints(user.getHealthPoints()-2); // health damage
+					if (!checkHealth(user)) { // check if user has enough health to continue
+						return false; // returns false, game ends
+					}
+					println(user.toString()); // display player stats
 					println("The C.O. tells you to scram so you do.");
 				}
 			} else {
-				println("\nYou walk away from the inmate and leave the dayroom.");
+				println("\nYou walk away from the inmate and leave the dayroom."); // next
 			}
 		} else if (answer == 2) {
-			println("\nYou are leaving the dayroom");
+			println("\nYou are leaving the dayroom"); // next
 		} else {
-			escape(user);
+			return escape(user); // user chose to escape, returns if successful or not
 		}
+		return true; // return true to continue game
 	}
-	public void laundry(Player user) {
+	// laundry scene
+	public boolean laundry(Player user) {
 		int answer = 0;
 		println("\n**** Laundry Room ****");
 		println(user.toString());
 		println("You are now in the Laundry Room.");
-		println("The room is just full of washers and driers.");
+		println("The room is just full of washers and dryers.");
 		do { 
 			try {
 				println("You've always hated doing your own laundry so\n"
@@ -248,67 +268,76 @@ public class Scenes {
 				println("1: Explore the laundry room");
 				println("2: You exit the laundry room" );
 				println("3: You try to escape the prison");
-				print("Please entering the corresponding number (1 / 2 / 3): ");
+				print("Please entering the corresponding number (1 / 2 / 3): ");  // prompt user for answer
 				answer = in.nextInt();
-				} catch(InputMismatchException e) {
-					answer = 100;
-					in.nextLine();
-				}
+			} catch(InputMismatchException e) { // catch exception if user did not enter correct prompt format
+				answer = 100;
+				in.nextLine();
+			}
 		} while(answer != 1 && answer != 2 && answer != 3);
+		// user prompt was accepted
 		if (answer == 1) {
-			println("\nYou began going through all the washers and driers to see what you can find.");
+			println("\nYou began going through all the washers and dryers to see what you can find.");
 			println("They all seem to be empty so no luck getting what you need here.");
-			println("You realized there is a drier pushed up against a utility closet door.");
+			println("You realize there is a dryer pushed up against a utility closet door.");
 			do { 
 				try {
 					println("\nYou decide to");
-					println("1: push the drier out of the way");
+					println("1: push the dryer out of the way");
 					println("2: ignore the door" );
-					print("Please entering the corresponding number (1 / 2): ");
+					print("Please enter the corresponding number (1 / 2): ");  // prompt user for answer
 					answer = in.nextInt();
-					} catch(InputMismatchException e) {
-						answer = 100;
-						in.nextLine();
-					}
+				} catch(InputMismatchException e) { // catch exception if user did not enter correct prompt format
+					answer = 100;
+					in.nextLine();
+				}
 			} while(answer != 1 && answer != 2);
+			// user prompt was accepted
 			if (answer == 1) {
-				println("\nYou begin to push the drier out of the way");
+				println("\nYou begin to push the dryer out of the way"); // strength level is used to gauge result
 				if (user.getStrength() == 2) {
 					println("You must of forgot that you are a weakling. You push with all your\n"
-							+ "might but the drier doesn't budge at all. You end of slipping and hurting your hand.");
+							+ "might but the dryer doesn't budge at all. You end of slipping and hurting your hand.");
 					println("Ouch.. Health - 1");
-					user.setHealthPoints(user.getHealthPoints()-1);
-					println(user.toString());
+					user.setHealthPoints(user.getHealthPoints()-1); // health damage
+					if (!checkHealth(user)) { // check if user has enough health to continue
+						return false; // returns false, game ends
+					}
+					println(user.toString()); // display player stats
 					println("While on the ground grasping at your hand, another inmate walks in and tells you to get"
 							+ "up \nand wash their sheets, they'll be back in 1 hour. ");
-					user.setInventory(user.getInventory(), "sheets");
-					println(user.toString());
+					println("Some sheets added to your inventory");
+					user.setInventory(user.getInventory(), "sheets"); // add sheets to inventory
+					println(user.toString()); // display player stats
 					println("It's time to leave the laundry room before their back.");
 				} else if (user.getStrength() == 3) {
-					println("You push and push but you can't move the drier. You realize "
+					println("You push and push but you can't move the dryer. You realize "
 							+ "it is not worth the energy to keep trying so you just leave.");
 				} else {
-					println("You push the drier out of the way with ease");
+					println("You push the dryer out of the way with ease");
 					println("You open up the door to find sheets inside");
-					user.setInventory(user.getInventory(), "sheets");
-					println(user.toString());
+					println("Some sheets added to your inventory");
+					user.setInventory(user.getInventory(), "sheets"); // add sheets to inventory
+					println(user.toString()); // display player stats
 					println("You leave the laundry room since there is nothing else for you in here.");
 				}
 			} else {
-				println("You leave the laundry room.");
+				println("You leave the laundry room."); // next
 			}	
 		} else if (answer == 2) {
-			println("You are leaving the laundry room");
+			println("You are leaving the laundry room"); // next
 		} else {
-			escape(user);
+			return escape(user); // user chose to escape, returns if successful or not
 		}
+		return true; // return true to continue game
 	}
-	public void yard(Player user) {
-		int answer = 0;
+	// yard scene
+	public boolean yard(Player user) {
+		int answer = 0; // initialize user's answer for prompts in this scene
 		println("\n**** The Yard ****");
 		println(user.toString());
 		println("You are now in the Yard.");
-		println("It's not time to enjoy the outdoors tho you can do that when you're free!");
+		println("It's not time to enjoy the outdoors tho, you can do that when you're free!");
 		println("The yard is full of areas for different activites and other inmates.");
 		do { 
 			try {
@@ -317,17 +346,18 @@ public class Scenes {
 				println("3: Talk to other inmates");
 				println("4: Leave the yard");
 				println("5: You try to escape the prison");
-				print("Please entering the corresponding number (1 / 2 / 3 / 4 / 5): ");
+				print("Please entering the corresponding number (1 / 2 / 3 / 4 / 5): ");  // prompt user for answer
 				answer = in.nextInt();
-				} catch(InputMismatchException e) {
-					answer = 100;
-					in.nextLine();
-				}
+			} catch(InputMismatchException e) { // catch exception if user did not enter correct prompt format
+				answer = 100;
+				in.nextLine();
+			}
 		} while(answer != 1 && answer != 2 && answer != 3 && answer != 4 && answer != 5);
+		// user prompt was accepted
 		if (answer == 1) {
 			println("\nIt's not time to hoop. There's nothing here");
 			yard(user);
-			
+
 		} else if (answer == 2) {
 			println("\nThe gym has a lot of potentially good escape items.");
 			println("You are weighing the potential of each item you come across..");
@@ -339,131 +369,154 @@ public class Scenes {
 			println("OTHER INMATE: Hey I wanted to use that. Give it here.\n");
 			do { 
 				try {
-					if (!user.getInventory().contains("rope")) {
+					if (!user.getInventory().contains("rope")) { // checks if you already have a rope
 						println("You have to decide whether you");
 						println("1: stand your ground");
 						println("2: give up the rope" );
-						print("Please entering the corresponding number (1 / 2 ): ");
+						print("Please entering the corresponding number (1 / 2 ): ");  // prompt user for answer
 						answer = in.nextInt();
 					} else {
 						println("You already have a rope.");
 						answer = 2;
 					}
-				} catch(InputMismatchException e) {
-						answer = 100;
-						in.nextLine();
+				} catch(InputMismatchException e) { // catch exception if user did not enter correct prompt format
+					answer = 100;
+					in.nextLine();
 				}
 			} while(answer != 1 && answer != 2);
+			// user prompt was accepted
 			if (answer == 1) {
 				if (user.getSecurityLevel() == 1) {
 					println("You try to stand your ground but its no use, the other inmate punks you,\n"
 							+ "takes the rope and yanks it out of your hand.");
 					println("Rope burn... Health - 1");
-					user.setHealthPoints(user.getHealthPoints()-1);
-					checkHealth(user);
-					yard(user);
+					user.setHealthPoints(user.getHealthPoints()-1); // health damage
+					if (!checkHealth(user)) { // check if user has enough health to continue
+						return false; // returns false, game ends
+					}
+					yard(user); // go back to beginning of yard scene
 				} else if (user.getSecurityLevel() == 2) {
 					println("It is the smartest idea to fight in the yard?");
 					println("It's not worth your time so you leave the gym area without the rope.\n");
-					yard(user);	
+					yard(user);	// go back to beginning of yard scene
 				} else {
 					println("OTHER INMATE: (cowers in fear) Oh I am so sorry, I didnt realize that was you.\n"
 							+ "I don't need the rope after all.");
+					println("A rope was added to your inventory");
 					user.setInventory(user.getInventory(), "rope");
-					println(user.toString());
+					println(user.toString()); // display player stats
 				}
 			} else if (answer == 2) {
 				println("It's not worth your time so you leave the gym area");
-				yard(user);
-			}
-				
+				yard(user); // go back to beginning of yard scene
+			}		
 		} else if (answer == 3) {
 			println("\nYou talk to inmates about your plan. They decide to help and give you a rope.");
-			if (user.getInventory().contains("rope")) {
+			if (user.getInventory().contains("rope")) { // checks if user already has rope in inventory
 				println("OTHER INMATE: No need to be stingy you already have one, give ours back.");
 			} else {
-				user.setInventory(user.getInventory(), "rope");
-				println(user.toString());
+				println("A rope was added to your inventory");
+				user.setInventory(user.getInventory(), "rope"); // rope added to inventory
+				println(user.toString()); // display player stats
 			}
 		} else if (answer == 4) {
-			println("You are now leaving the yard");
+			println("You are now leaving the yard"); // next
 		} else {
-			escape(user);
+			return escape(user); // user chose to escape, returns if successful or not
 		}
+		return true; // return true to continue game
 	}
-	
-	public void escape(Player user) {
-		println("\nThe guards seem to be busy and distacted. You see the opening you have been waiting for."
+	// escape method to check if user successfully escapes
+	public boolean escape(Player user) {
+		println("\n**** ESCAPE ****");
+		println("\nThe guards seem to be busy and distracted. You see the opening you have been waiting for."
 				+ "\nYou make your way outside and notice that the electric fence is off. You approach the"
 				+ "\nperimeter fence. You check your inventory and begin your escape plan.");
-		println(user.toString());
+		println(user.toString()); // display player stats
 		if (user.getInventory().contains("grappling hook") &&
-			user.getInventory().contains("rope") && 
-			user.getInventory().contains("disguise") &&
-			user.getInventory().contains("sheets")) {
-			   println("You take your disguise and put it on. Now you take your grappling hook and rope"
-			   		+ "\nand throw it to the top of the fence. You easily climb to the top of the fence."
-			   		+ "\nThe guards see that you are up there but assume you are a maintence work. You then"
-			   		+ "\n take the sheets and place them over the barbed wire to keep yourself from getting"
-			   		+ "\nsliced up. You climb over and repel down sucessfully onto the other side of freedom!");
-			   gameOver(user, true);
-			   return;
-		}else {
-			if (!user.getInventory().contains("toothbrush")) {
-				println("\nYou don't have a grappling hook. You slip from the fence and hurt yourself!");
-				println("Ouch.. Health - 2");
-				user.setHealthPoints(user.getHealthPoints() - 2);
-				checkHealth(user);
-			}
-			else if (!user.getInventory().contains("rope")) {
-				println("\nYou don't have a grappling rope. It's hard to grip the fence and you hurt yourself!");
-				println("Hand Cramps.. Health - 2");
-				user.setHealthPoints(user.getHealthPoints() - 2);
-				checkHealth(user); 
-			}
-			else if (!user.getInventory().contains("disguise")) {
-				println("\nYou don't have a disguise. The guards notice you climbing and turn on the electric fence!");
-				println("Extra Crispy.. Health - 3");
-				user.setHealthPoints(user.getHealthPoints() - 3);
-				checkHealth(user);
-			}
-			else if (!user.getInventory().contains("sheets")) {
-				println("\nYou don't have sheets. You cut yourself on the barbed wire!");
-				println("Sliced.. Health - 2");
-				user.setHealthPoints(user.getHealthPoints() - 2);
-				checkHealth(user);
-			}
-			println("You find yourself on the other side of the fence. You may have gotten hurt in the process"
-					+ "\nbut the end result is freedom! Everything that you went through today was worth it.");	
-		}
-		
-	}
-	public void checkHealth(Player user) {
-		if (user.getHealthPoints() < 2) {
-			println("Seems like you got critically injured. You were sent to the infirmary."
-					+ "Looks like your escape plans are on hold.");
-			gameOver(user, false);
-		}
-	
-	}
-	public boolean gameOver(Player user, boolean over) {
-		if (over) {
-			println("You successfully broke out of the Java State Prison!! Good luck to you!"
-					+ "\n Make sure to debug in the future so you don't end up back here!"
-					+ "\nEnjoy your life on the run, you may be free now but at what cost.");
+				user.getInventory().contains("rope") && 
+				user.getInventory().contains("disguise") &&
+				user.getInventory().contains("sheets")) { // checks if user has all required items in inventory
+			println("You take your disguise and put it on. Now you take your grappling hook and rope"
+					+ "\nand throw it to the top of the fence. You easily climb to the top of the fence."
+					+ "\nThe guards see that you are up there but assume you are a maintence work. You then"
+					+ "\n take the sheets and place them over the barbed wire to keep yourself from getting"
+					+ "\nsliced up. You climb over and repel down sucessfully onto the other side of freedom!");
 			return true;
-		} else {
-			println("Seems like you plan was as well executed and the code that got you put here"
+		}else {
+			if (!user.getInventory().contains("grappling hook")) { // user doesn't have a grappling hook
+				println("You don't have a grappling hook. You slip from the fence and hurt yourself!");
+				println("Ouch.. Health - 2");
+				user.setHealthPoints(user.getHealthPoints() - 2); // health damage
+				if (!checkHealth(user)) { // check if user has enough health to continue
+					return false;
+				}
+			}
+			if (!user.getInventory().contains("rope")) { // user doesn't have a rope
+				println("escape 2nd case");
+				println("You don't have a grappling rope. It's hard to grip the fence and you hurt yourself!");
+				println("Hand Cramps.. Health - 2");
+				user.setHealthPoints(user.getHealthPoints() - 2); // health damage
+				if (!checkHealth(user)) { // check if user has enough health to continue
+					return false;
+				} 
+			}
+			if (!user.getInventory().contains("disguise")) { // user doesn't have a disguise
+				println("You don't have a disguise. The guards notice you climbing and turn on the electric fence!");
+				println("Extra Crispy.. Health - 3");
+				user.setHealthPoints(user.getHealthPoints() - 3); // health damage
+				if (!checkHealth(user)) { // check if user has enough health to continue
+					return false;
+				};
+			}
+			if (!user.getInventory().contains("sheets")) { // user doesn't have sheets
+				println("You don't have sheets. You cut yourself on the barbed wire!");
+				println("Sliced.. Health - 2");
+				user.setHealthPoints(user.getHealthPoints() - 3); // health damage
+				if (!checkHealth(user)) { // check if user has enough health to continue
+					return false;
+				}
+			}
+			// user has enough health after escaping
+			println("You find yourself on the other side of the fence. You may have gotten hurt in the process"
+					+ "\nbut the end result is freedom! Everything that you went through today was worth it.");
+			gameOver(true);
+			return false;	// returns false to continue game
+		}
+	}
+	// method to check user's health and see if game ends
+	public boolean checkHealth(Player user) {
+		if (user.getHealthPoints() < 1) { // check if user's health is low
+			user.setHealthPoints(0); // if health is negative set to 0
+			println(user.toString()); // display player stats
+			println("\nYou are critically injured. You were sent to the infirmary."
+					+ "Looks like your escape plans are on hold.");
+			;
+			gameOver(false); // game over, print lose message
+			return false; // game over return false
+		}
+		println(user.toString()); // display player stats
+		return true; // return true to continue game
+	}
+	
+	public void gameOver(boolean over) {
+		if (over) { // win message
+			println("You successfully broke out of the Java State Prison!! Good luck to you!"
+					+ "\nMake sure to debug in the future so you don't end up back here!"
+					+ "\nEnjoy your life on the run, you may be free now but at what cost.");
+			
+		} else { // lose message
+			println("Seems like your plan was as well executed as the code that got you put here"
 					+ "\nin the first place. Better luck time! Oh yeah and enjoy the added time"
-					+ "\nto your sentence. ");
-			return false;
+					+ "\nto your sentence. ");	
 		}	
 	}
+	// this method is just to have more convenient print method
 	public static void print(Object string) {
 		System.out.print(string);
 	}
+	// this method is just to have more convenient println method
 	public static void println(Object string) {
 		System.out.println(string);
 	}
-	
 }

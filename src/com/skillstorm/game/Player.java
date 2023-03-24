@@ -2,22 +2,23 @@ package com.skillstorm.game;
 
 import java.util.ArrayList;
 
-public class Player {
+public class Player { // player object
+
+	private String name; // user's name
+	private int securityLevel; // player's security level, this determines the player's other properties
+	private int healthPoints; // player's health
+	private int strength; // player's strength
+	private int intellegence; // player's intelligence
+	private ArrayList<String> inventory = new ArrayList<String>(5); // an ArrayList to hold the player's items 
 	
-	private String name;
-	private int securityLevel;
-	private int healthPoints;
-	private int strength;
-	private int intellegence;
-	private ArrayList<String> inventory = new ArrayList<String>(5);
-	
+	// constructor for player object
 	public Player(String name,
-				 int securityLevel, 
-				 int healthPoints, 
-				 int strength, 
-				 int intellegence,
-				 ArrayList<String> inventory) {
-		
+			int securityLevel, 
+			int healthPoints, 
+			int strength, 
+			int intellegence,
+			ArrayList<String> inventory) {
+
 		this.name = name;
 		this.healthPoints = healthPoints;
 		this.securityLevel = securityLevel;
@@ -26,6 +27,7 @@ public class Player {
 		this.inventory = inventory;
 	}
 
+	// getter and setter methods for player's properties
 	public String getName() {
 		return name;
 	}
@@ -63,24 +65,26 @@ public class Player {
 		this.inventory = inventory;
 		this.inventory.add(item);
 	}
+	// override method to print the player's properties
+	@Override
 	public String toString() {
 		String inventoryList = "";
 		for (String inv : inventory) {
 			inventoryList += (inv + " ");
 		}
 		return String.format("============================ PLAYER STATS ============================\n"
-							+ "\nPrisoner %s  "
-							+ "Security Level:%d  "
-							+ "Health:%d  "
-							+ "Stength:%d  "
-							+ "Intelligence:%d  " 
-							+ "Inventory: %s\n",
-							name,
-							securityLevel,
-							healthPoints,
-							strength,
-							intellegence,
-							inventoryList);
+				+ "\nPrisoner %s  "
+				+ "Security Level:%d  "
+				+ "Health:%d  "
+				+ "Stength:%d  "
+				+ "Intelligence:%d  " 
+				+ "Inventory: %s\n",
+				name,
+				securityLevel,
+				healthPoints,
+				strength,
+				intellegence,
+				inventoryList);
 	}	
 }
 
