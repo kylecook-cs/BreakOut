@@ -8,15 +8,10 @@ public class BreakOut {
 	static Scanner in = new Scanner(System.in);
 
 	public static void main(String[] args){
-		try {
-			playAgain(); // calls this method to play game until user doesn't want to
-		} catch (InterruptedException e) {
-			println("Thread Interrupted");
-			e.printStackTrace();
-		}
+			playAgain(); // calls this method to play game until user doesn't want to	
 	}
 	// this method starts the game, sets the scenes, and finishes game. Then asks user if they want to replay
-	public static void playAgain() throws InterruptedException {
+	public static void playAgain(){
 		Random randomGen = new Random(); // random generator
 		ArrayList<Integer> scenes = new ArrayList<Integer>(); // arrayList to store the scene order
 		boolean playAgain; // play again flag
@@ -29,12 +24,12 @@ public class BreakOut {
 			println("You are wondering how you got in this position but no matter how much you replay "
 					+ "\nwhat you have done you know that it doesn't matter now. You are headed to your "
 					+ "\nnew home.");
-			Thread.sleep(8000);
+
 			println("\nCOP: You thought you'd get away with it huh? Sike! Now look at you, you're headed"
 					+ " to prison.");
 			println("COP: Good Luck, the Java State Prison is no joke.");
 			println("COP: But you know what they say, don't do the crime if you can't do the time");
-			Thread.sleep(6000);
+
 			println("\nYou arrive at the prison and are escorted to the processing unit.\n");
 			println("********************************************************************************");
 
