@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Scenes { // scenes object
 
 	static Scanner in = new Scanner(System.in); // Scanner object that this class can use
-
+	public Scenes () {}
 	// this method is where game really begins and creates the user's player object
 	public static Player admin() {
 		String username; // holds user's input for name
@@ -22,7 +22,7 @@ public class Scenes { // scenes object
 		println("ADMIN: This is the processing unit, I will need just a couple pieces of information from you.");
 		do {
 			print("ADMIN: May I have your name?: "); // prompt user for name
-			username = in.nextLine();
+			username = in.next();
 	
 		} while (username.trim().equals("")); // checks if user entered any input
 		do {
@@ -550,7 +550,6 @@ public class Scenes { // scenes object
 					+ "\nMake sure to debug in the future so you don't end up back here!"
 					+ "\nEnjoy your life on the run, you may be free now but at what cost.");
 //			Thread.sleep(3000); // sleep to time output
-			
 		} else { // lose message
 			println("Seems like your plan was as well executed as the code that got you put here"
 					+ "\nin the first place. Better luck time! Oh yeah and enjoy the added time"

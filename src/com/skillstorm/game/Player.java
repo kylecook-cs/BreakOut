@@ -11,6 +11,7 @@ public class Player { // player object
 	private int intellegence; // player's intelligence
 	private ArrayList<String> inventory = new ArrayList<String>(5); // an ArrayList to hold the player's items 
 	
+	public Player() {}
 	// constructor for player object
 	public Player(String name,
 			int securityLevel, 

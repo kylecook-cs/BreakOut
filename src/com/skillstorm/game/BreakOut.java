@@ -42,6 +42,7 @@ public class BreakOut {
 					scenes.add(random); // if not then add that scene
 				}
 			}
+
 			scenes.add(10); // add the escape scene at the end
 			levels: // label for looping through scenes
 				for(int num : scenes ) { // foreach to loop through each scene
@@ -69,7 +70,6 @@ public class BreakOut {
 						gameScene.escape(inmate);
 					}
 				}
-
 			do {
 				print("\nWould you like to play again? (Y/N): "); // prompt user on whether to play again
 				again = in.nextLine();
@@ -79,8 +79,8 @@ public class BreakOut {
 					playAgain = false; // no don't play again
 				}
 			} while (!again.equalsIgnoreCase("y") && !again.equalsIgnoreCase("n")); // enforce user to enter accepted response only
-			println("");
 		} while (playAgain);
+		println("Have a good one! See you next time.");
 	}
 	// this method is just to have more convenient print method
 	public static void print(Object string) {
