@@ -10,7 +10,7 @@ public class Player { // player object
 	private int strength; // player's strength
 	private int intellegence; // player's intelligence
 	private ArrayList<String> inventory = new ArrayList<String>(5); // an ArrayList to hold the player's items 
-	
+
 	public Player() {}
 	// constructor for player object
 	public Player(String name,
@@ -27,7 +27,6 @@ public class Player { // player object
 		this.intellegence = intellegence;
 		this.inventory = inventory;
 	}
-
 	// getter and setter methods for player's properties
 	public String getName() {
 		return name;

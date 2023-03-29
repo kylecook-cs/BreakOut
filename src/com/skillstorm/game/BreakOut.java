@@ -8,7 +8,7 @@ public class BreakOut {
 	static Scanner in = new Scanner(System.in);
 
 	public static void main(String[] args){
-			playAgain(); // calls this method to play game until user doesn't want to	
+		playAgain(); // calls this method to play game until user doesn't want to	
 	}
 	// this method starts the game, sets the scenes, and finishes game. Then asks user if they want to replay
 	public static void playAgain(){
@@ -33,8 +33,8 @@ public class BreakOut {
 			println("\nYou arrive at the prison and are escorted to the processing unit.\n");
 			println("********************************************************************************");
 
-			Scenes gameScene = new Scenes(); // create scenes object
-			Player inmate = Scenes.admin(); // creates an player object for user
+			Scene gameScene = new Scene(); // create scenes object
+			Player inmate = Scene.admin(); // creates an player object for user
 
 			while (scenes.size() < 5) { // gets a random order of scenes
 				int random = randomGen.nextInt(5);
@@ -42,8 +42,7 @@ public class BreakOut {
 					scenes.add(random); // if not then add that scene
 				}
 			}
-
-			scenes.add(10); // add the escape scene at the end
+			scenes.add(5); // add the escape scene at the end
 			levels: // label for looping through scenes
 				for(int num : scenes ) { // foreach to loop through each scene
 					if (num == 0) {
@@ -65,9 +64,10 @@ public class BreakOut {
 					} else if (num == 4) {
 						if (!gameScene.dayroom(inmate)) {
 							break levels;
-						}
+						} 
 					} else {
 						gameScene.escape(inmate);
+						break levels;
 					}
 				}
 			do {
