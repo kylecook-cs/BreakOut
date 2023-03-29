@@ -16,8 +16,8 @@ public class Scene { // scenes object
 		starterInventory.add("toothbrush"); // add toothbrush to inventory
 		Player user; // declare a player object
 		int mode;
-			do {
-				try {
+		do {
+			try {
 				println("\nThere are 3 difficulty levels -");
 				println("Easy (1) / Medium (2) / Hard (3)");
 				print("Please enter a difficulty level (1 / 2 / 3 ): ");
@@ -27,28 +27,28 @@ public class Scene { // scenes object
 				in.nextLine();
 			}
 		} while (mode != 1 && mode != 2 && mode != 3 );
-			if (mode == 1 ) {
-				println("You have choosen easy mode");
-			} else if (mode == 2) {
-				println("You have choosen medium mode");
-			} else {
-				println("You have choosen hard mode");
-			}
-		
+		if (mode == 1 ) {
+			println("You have choosen easy mode");
+		} else if (mode == 2) {
+			println("You have choosen medium mode");
+		} else {
+			println("You have choosen hard mode");
+		}
+
 		// beginning of Admin Scene
-		
+
 		println("\n***** ADMIN *****");
 		println("ADMIN: Welcome to the Java State Prison.");
 		println("ADMIN: This is the processing unit, I will need just a couple pieces of information from you.");
 		do {
-			print("ADMIN: May I have your name?: "); // prompt user for name
+			print("\nADMIN: May I have your name?: "); // prompt user for name
 			username = in.next();
 
 		} while (username.trim().equals("")); // checks if user entered any input
 		do {
 			println("\nADMIN: Thank you, Prisoner " + username); // username was accepted
 			try {
-				print("ADMIN: Now can you tell me what your security level is "
+				print("\nADMIN: Now can you tell me what your security level is "
 						+ "(1: minimum, 2: average, 3: maximum): "); // prompt user for their player's security level
 				securityLevel = in.nextInt();
 			} catch(InputMismatchException e) { // catch exception if user did not enter correct prompt format
@@ -61,45 +61,45 @@ public class Scene { // scenes object
 			if (mode == 1) {
 				println("\nADMIN: Level 1 security... Hmmmm interesting, you must have just forgot a ; somewhere,"
 						+ "\n\tso I'll put in your file that you fall under the weak catergory.\n");
-				user = new Player(username, securityLevel, 7, 2, 5, starterInventory); // create weak player on easy
+				user = new Player(username, securityLevel, 7, 2, 5, starterInventory, 1); // create weak player on easy
 				println(user); // display player stats
 			} else if (mode == 2) {
 				println("\nADMIN: Level 1 security... Hmmmm interesting, you must have just forgot a ; somewhere,"
 						+ "\n\tso I'll put in your file that you fall under the weak catergory.\n");
-				user = new Player(username, securityLevel, 5, 2, 5, starterInventory); // create weak player on medium
+				user = new Player(username, securityLevel, 5, 2, 5, starterInventory, 2); // create weak player on medium
 				println(user); // display player stats
 			} else {
 				println("\nADMIN: Level 1 security... Hmmmm interesting, you must have just forgot a ; somewhere,"
 						+ "\n\tso I'll put in your file that you fall under the weak catergory.\n");
-				user = new Player(username, securityLevel, 3, 2, 5, starterInventory); // create weak player on hard 
+				user = new Player(username, securityLevel, 3, 2, 5, starterInventory, 3); // create weak player on hard 
 				println(user); // display player stats
 			}
 		} else if (securityLevel == 2) { // if security level == 2
 			if (mode == 1) {
 				println("\nADMIN: Level 2 security you say, you must have used the wrong data type? I'll be sure to note that.\n");
-				user = new Player(username, securityLevel, 8, 3, 3, starterInventory);	// create average player on easy
+				user = new Player(username, securityLevel, 8, 3, 3, starterInventory, 1);	// create average player on easy
 				println(user); // display player stats
 			} else if (mode == 2) {
 				println("\nADMIN: Level 2 security you say, you must have used the wrong data type? I'll be sure to note that.\n");
-				user = new Player(username, securityLevel, 6, 3, 3, starterInventory);	// create average player on medium
+				user = new Player(username, securityLevel, 6, 3, 3, starterInventory, 2);	// create average player on medium
 				println(user); // display player stats
 			} else {
 				println("\nADMIN: Level 2 security you say, you must have used the wrong data type? I'll be sure to note that.\n");
-				user = new Player(username, securityLevel, 4, 3, 3, starterInventory);	// create average player on hard
+				user = new Player(username, securityLevel, 4, 3, 3, starterInventory, 3);	// create average player on hard
 				println(user); // display player stats
 			}
 		} else { // if security level == 3
 			if (mode == 1) {
 				println("\nADMIN: Level 3 Yikeees! You must be an infinite looper! Remind me to stay out of your code...\n");
-				user = new Player(username, securityLevel, 10, 5, 1, starterInventory); // create strong player on easy
+				user = new Player(username, securityLevel, 10, 5, 1, starterInventory, 1); // create strong player on easy
 				println(user); // display player stats
 			} else if (mode == 2) {
 				println("\nADMIN: Level 3 Yikeees! You must be an infinite looper! Remind me to stay out of your code...\n");
-				user = new Player(username, securityLevel, 7, 5, 1, starterInventory); // create strong player on medium
+				user = new Player(username, securityLevel, 7, 5, 1, starterInventory, 2); // create strong player on medium
 				println(user); // display player stats
 			} else {
 				println("\nADMIN: Level 3 Yikeees! You must be an infinite looper! Remind me to stay out of your code...\n");
-				user = new Player(username, securityLevel, 4, 5, 1, starterInventory); // create strong player on hard
+				user = new Player(username, securityLevel, 4, 5, 1, starterInventory, 3); // create strong player on hard
 				println(user); // display player stats
 			}
 		}
@@ -124,7 +124,7 @@ public class Scene { // scenes object
 		println("This cell reminds of you of every reason why you don't want to be here.");
 		do { 
 			try {
-				println("You can't waste any more time! You decide that you will:");
+				println("\nYou can't waste any more time! You decide that you will:");
 				println("1: You look around your cell");
 				println("2: You exit the cell" );
 				println("3: You try to escape the prison");
@@ -172,7 +172,6 @@ public class Scene { // scenes object
 				println("You end up getting beat up pretty badly, your cell mate kicks you out of the cell.");
 				println("Bad Idea... Health - 2");
 				user.setHealthPoints(user.getHealthPoints()-3); // health damage
-				println(user); // display player stats
 				if (!checkHealth(user)) { // check if user has enough health to continue
 					return false; // returns false, game ends
 				}
@@ -188,11 +187,12 @@ public class Scene { // scenes object
 	public boolean kitchen(Player user) {
 		int answer = 0; // initialize user's answer for prompts in this scene
 		println("\n**** Kitchen ****");
+		println(user); // display user stats
 		println("You are in the kitchen. This room does not have much to offer since everything is either tethered down or \n"
 				+ "too heavy to carry on your person.\n");	
 		do { 
 			try {
-				println("You decide to: ");
+				println("\nYou decide to: ");
 				println("1: look around anyways");
 				println("2: leave the kitchen");
 				println("3: you try to escape the prison");
@@ -208,27 +208,29 @@ public class Scene { // scenes object
 			println("\nWhile searching around the kitchen, you find a snack and decide to eat it to get some more energy.");
 			println("Eating... Health + 1");
 			user.setHealthPoints(user.getHealthPoints()+1); // health increase
-			println(user); // display player stats
-			println("You notice a box behind the drawer the snack was in. You take it out and look inside");
-			if (user.getSecurityLevel() == 1) {
-				println("You have found a grappling hook!");
-				println("A grappling hook was added to your inventory.");
-				user.setInventory(user.getInventory(), "grappling hook");
-				println(user);
-			} else if (user.getSecurityLevel() == 2) {
-				if(!user.getInventory().contains("sheets")) {
-					println("You have found some sheets!");
-					println("Some sheets were added to your inventory.");
-					user.setInventory(user.getInventory(), "sheets");
+			println(user); // display user stats
+			if (user.getGameMode() == 1) { // if game mode is easy then users will get certain inventory item
+				println("You notice a box behind the drawer the snack was in. You take it out and look inside");
+				if (user.getSecurityLevel() == 1) {
+					println("You have found a grappling hook!");
+					println("A grappling hook was added to your inventory.");
+					user.setInventory(user.getInventory(), "grappling hook");
 					println(user);
+				} else if (user.getSecurityLevel() == 2) {
+					if(!user.getInventory().contains("sheets")) {
+						println("You have found some sheets!");
+						println("Some sheets were added to your inventory.");
+						user.setInventory(user.getInventory(), "sheets");
+						println(user);
+					} else {
+						println("The box was empty");
+					}
 				} else {
-					println("The box was empty");
+					println("You have found a disguise!");
+					println("A disguise was added to your inventory.");
+					user.setInventory(user.getInventory(), "disguise");
+					println(user);
 				}
-			} else {
-				println("You have found a disguise!");
-				println("A disguise was added to your inventory.");
-				user.setInventory(user.getInventory(), "disguise");
-				println(user);
 			}
 			println("There's nothing else here so you leave the kitchen");
 		} else if (answer == 2){
@@ -314,7 +316,6 @@ public class Scene { // scenes object
 					if (!checkHealth(user)) { // check if user has enough health to continue
 						return false; // returns false, game ends
 					}
-					println(user); // display player stats
 					println("The C.O. tells you to scram so you do.");
 				}
 			} else {
@@ -336,8 +337,8 @@ public class Scene { // scenes object
 		println("The room is just full of washers and dryers.\n");
 		do { 
 			try {
-				println("You've always hated doing your own laundry so\n"
-						+ "you want to get out of here as fast as possible, you decide that you will:");
+				println("\nYou've always hated doing your own laundry so\n"
+						+ "you want to get out of here as fast as possible,\nyou decide that you will:");
 				println("1: Explore the laundry room");
 				println("2: You exit the laundry room" );
 				println("3: You try to escape the prison");
@@ -373,6 +374,7 @@ public class Scene { // scenes object
 							+ "might but the dryer doesn't budge at all. You end of slipping and hurting your hand.");
 					println("Ouch.. Health - 1");
 					user.setHealthPoints(user.getHealthPoints()-1); // health damage
+					println(user); // display player stats
 					if (!checkHealth(user)) { // check if user has enough health to continue
 						return false; // returns false, game ends
 					}
@@ -381,7 +383,7 @@ public class Scene { // scenes object
 					println("Sheets added to your inventory");
 					user.setInventory(user.getInventory(), "sheets"); // add sheets to inventory
 					println(user); // display player stats
-					println("It's time to leave the laundry room before their back.");
+					println("It's time to leave the laundry room before they're back.");
 				} else if (user.getStrength() == 3) {
 					println("You push and push but you can't move the dryer. You realize "
 							+ "it is not worth the energy to keep trying so you just leave.");
@@ -442,7 +444,7 @@ public class Scene { // scenes object
 			do { 
 				try {
 					if (!user.getInventory().contains("rope")) { // checks if you already have a rope
-						println("You have to decide whether you");
+						println("\nYou have to decide whether you");
 						println("1: stand your ground");
 						println("2: give up the rope" );
 						print("Please entering the corresponding number (1 / 2 ): ");  // prompt user for answer
@@ -477,7 +479,6 @@ public class Scene { // scenes object
 					println("A rope was added to your inventory");
 					user.setInventory(user.getInventory(), "rope");
 					println(user); // display player stats
-					yard(user);
 				}
 			} else if (answer == 2) {
 				println("It's not worth your time so you leave the gym area");
@@ -499,7 +500,7 @@ public class Scene { // scenes object
 		}
 		return true; // return true to continue game
 	}
-	// escape method to check if user successfully escapes
+	// escape method to check if user successfully escapes 
 	public boolean escape(Player user) {
 		println("\n**** ESCAPE ****");
 		println("\nThe guards seem to be busy and distracted. You see the opening you have been waiting for."
@@ -512,7 +513,7 @@ public class Scene { // scenes object
 				user.getInventory().contains("sheets")) { // checks if user has all required items in inventory
 			println("You take your disguise and put it on. Now you take your grappling hook and rope"
 					+ "\nand throw it to the top of the fence. You easily climb to the top of the fence."
-					+ "\nThe guards see that you are up there but assume you are a maintence work. You then"
+					+ "\nThe guards see that you are up there but assume you are a maintenance worker. You then"
 					+ "\ntake the sheets and place them over the barbed wire to keep yourself from getting"
 					+ "\nsliced up. You climb over and repel down sucessfully onto the other side of freedom!");
 			gameOver(true);
@@ -561,14 +562,13 @@ public class Scene { // scenes object
 	public boolean checkHealth(Player user) {
 		if (user.getHealthPoints() < 1) { // check if user's health is low
 			user.setHealthPoints(0); // if health is negative set to 0
-			println(user); // display player stats
+			println(user); // display user stats
 			println("\nYou are critically injured. You were sent to the infirmary."
 					+ "Looks like your escape plans are on hold.");
-			;
 			gameOver(false); // game over, print lose message
 			return false; // game over return false
 		}
-		println(user); // display player stats
+		println(user); // display user stats
 		return true; // return true to continue game
 	}	
 	// game over prompts

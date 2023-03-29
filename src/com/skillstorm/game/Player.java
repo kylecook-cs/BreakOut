@@ -9,7 +9,8 @@ public class Player { // player object
 	private int healthPoints; // player's health
 	private int strength; // player's strength
 	private int intellegence; // player's intelligence
-	private ArrayList<String> inventory = new ArrayList<String>(5); // an ArrayList to hold the player's items 
+	private ArrayList<String> inventory = new ArrayList<String>(5); // an ArrayList to hold the player's items
+	private int gameMode;
 
 	public Player() {}
 	// constructor for player object
@@ -18,7 +19,8 @@ public class Player { // player object
 			int healthPoints, 
 			int strength, 
 			int intellegence,
-			ArrayList<String> inventory) {
+			ArrayList<String> inventory,
+			int gameMode) {
 
 		this.name = name;
 		this.healthPoints = healthPoints;
@@ -26,6 +28,7 @@ public class Player { // player object
 		this.strength = strength;
 		this.intellegence = intellegence;
 		this.inventory = inventory;
+		this.gameMode = gameMode;
 	}
 	// getter and setter methods for player's properties
 	public String getName() {
@@ -64,6 +67,12 @@ public class Player { // player object
 	public void setInventory(ArrayList<String> inventory, String item) {	
 		this.inventory = inventory;
 		this.inventory.add(item);
+	}
+	public int getGameMode() {
+		return gameMode;
+	}
+	public void setGameMode(int gameMode) {
+		this.gameMode = gameMode;
 	}
 	// override method to print the player's properties
 	@Override
