@@ -77,10 +77,6 @@ public class Player { // player object
 	// override method to print the player's properties
 	@Override
 	public String toString() {
-		String inventoryList = "";
-		for (String inv : inventory) {
-			inventoryList += (inv + " ");
-		}
 		return String.format("============================ PLAYER STATS ============================\n"
 				+ "\nPrisoner %s  "
 				+ "Security Level:%d  "
@@ -93,7 +89,7 @@ public class Player { // player object
 				healthPoints,
 				strength,
 				intellegence,
-				inventoryList);
+				inventory);
 	}	
 }
 

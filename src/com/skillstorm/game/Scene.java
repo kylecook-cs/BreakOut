@@ -247,7 +247,7 @@ public class Scene { // scenes object
 		println(user);
 		println("You find yourself in the Dayroom.");
 		println("Just a bunch of tvs and tables around. Some other inmates are located in different parts"
-				+ " of this room. Best to be quiet and not let too many know of your plan.");
+				+ " of this room. \nBest to be quiet and not let too many know of your plan.");
 		do { 
 			try {
 				println("\nAfter analyzing your options, you decide that you will:");
@@ -386,7 +386,7 @@ public class Scene { // scenes object
 					println("It's time to leave the laundry room before they're back.");
 				} else if (user.getStrength() == 3) {
 					println("You push and push but you can't move the dryer. You realize "
-							+ "it is not worth the energy to keep trying so you just leave.");
+							+ "\nit is not worth the energy to keep trying so you just leave.");
 				} else {
 					println("You push the dryer out of the way with ease");
 					println("You open up the door to find sheets inside");
