@@ -26,7 +26,7 @@ public class Scene { // scenes object
 				mode = 5;
 				in.nextLine();
 			}
-		} while (mode != 1 && mode != 2 && mode != 3 );
+		} while (mode != 1 && mode != 2 && mode != 3);
 		if (mode == 1 ) {
 			println("You have choosen easy mode");
 		} else if (mode == 2) {
