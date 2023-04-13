@@ -28,11 +28,11 @@ public class Scene { // scenes object
 			}
 		} while (mode != 1 && mode != 2 && mode != 3);
 		if (mode == 1 ) {
-			println("You have choosen easy mode");
+			println("You have chosen easy mode");
 		} else if (mode == 2) {
-			println("You have choosen medium mode");
+			println("You have chosen medium mode");
 		} else {
-			println("You have choosen hard mode");
+			println("You have chosen hard mode");
 		}
 
 		// beginning of Admin Scene
